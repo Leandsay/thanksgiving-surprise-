@@ -7,17 +7,31 @@
     <style>
         body {
             margin: 0;
-            background-color: #f8e7d1;
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            font-family: 'Arial', sans-serif;
             overflow: hidden;
+            animation: gradientAnimation 10s infinite alternate;
         }
+        @keyframes gradientAnimation {
+            0% {
+                background: linear-gradient(45deg, #f8e7d1, #d2691e);
+            }
+            50% {
+                background: linear-gradient(45deg, #ffcc00, #ff6666);
+            }
+            100% {
+                background: linear-gradient(45deg, #f8e7d1, #ffcc00);
+            }
+        }
+
         .popup {
             text-align: center;
             animation: pop-in 0.8s ease-in-out;
+            position: relative;
+            z-index: 1;
         }
         .popup img {
             width: 150px;
@@ -25,23 +39,57 @@
         }
         .popup h1 {
             color: #d2691e;
-            font-size: 2.5rem;
+            font-size: 3rem;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            margin: 20px 0;
         }
+        
         @keyframes pop-in {
             from { transform: scale(0); }
             to { transform: scale(1); }
         }
+
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
+
+        /* Floating particles effect */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.6);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-50px); opacity: 0; }
+        }
+
+        /* Create multiple particles */
+        .particle:nth-child(1) { width: 10px; height: 10px; top: 10%; left: 20%; animation-duration: 3s; animation-delay: 1s; }
+        .particle:nth-child(2) { width: 12px; height: 12px; top: 30%; left: 40%; animation-duration: 4s; animation-delay: 2s; }
+        .particle:nth-child(3) { width: 8px; height: 8px; top: 60%; left: 60%; animation-duration: 5s; animation-delay: 0.5s; }
+        .particle:nth-child(4) { width: 14px; height: 14px; top: 70%; left: 80%; animation-duration: 4s; animation-delay: 1.5s; }
+        .particle:nth-child(5) { width: 16px; height: 16px; top: 50%; left: 10%; animation-duration: 3.5s; animation-delay: 3s; }
+
     </style>
 </head>
 <body>
     <div class="popup">
         <img src="https://your-image-link.com/turkey.png" alt="Turkey">
-        <h1>Happy Thanksgiving!</h1>
+        <h1>Happy Thanksgiving SunnyMac Solar!</h1>
     </div>
+
+    <!-- Floating Particles -->
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+
     <audio autoplay>
         <source src="https://your-audio-link.com/thanksgiving.mp3" type="audio/mpeg">
     </audio>
